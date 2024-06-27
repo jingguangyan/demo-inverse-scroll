@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .water-mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .inverse-scroll-wrap {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+
+        .item {
+            height: 120vh;
+            width: 50%;
+            margin: 0 auto;
+            background-color: red;
+            color: #fff;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .reverse-y {
+            transform: scaleY(-1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="water-mask" class="water-mask"></div>
+        <div id="list" class="inverse-scroll-wrap reverse-y">
+            <div id="item" class="item reverse-y">123</div>
+        </div>
+    </div>
+    <script>
+        const waterMask = document.querySelector('#water-mask');
+        if (waterMask) {
+            waterMask.addEventListener('scroll', function (e) {
+                console.log('watermask scroll', e);
+            })
+        }
+    </script>
+</body>
+
+</html>
